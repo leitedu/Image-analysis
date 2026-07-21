@@ -4,4 +4,4 @@ numpy
 matplotlib
 pandas
 PIL
-sklearn
+scikit-learn
