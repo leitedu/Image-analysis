@@ -1,0 +1,12 @@
+#Cultivo de celulas
+var = []
+hr = ['24h', '48h']
+concentracoes = ['04.5', '09.0', '18.0', '25.0', '32.0']
+
+#Luma
+param_luma = [0.299, 0.587, 0.114]
+
+#DBSCAN
+limiar = 50
+eps = 5
+min_samples = 20
