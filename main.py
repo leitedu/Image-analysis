@@ -53,6 +53,24 @@ if __name__ == "__main__":
                 for item, lista in dados_clusters_img.items():
                     bd_clusters[item] += lista
 
+                dic = {'imagem inicial': {'imagem': imagem_inicial, 'subplot': [0, 0], 'titulo': 'Média imagens do meio sem cultivo', 'alpha': 1, 'cmap' : None},
+                        'imagem final': {'imagem': imagem_final, 'subplot': [0, 1], 'titulo': image_cell[:-4], 'alpha': 1, 'cmap' : None},
+                        'contraste1': {'imagem': imagem_contraste, 'subplot': [1, 0], 'titulo': 'Imagem contraste de fase', 'alpha': 0.8, 'cmap' : None},
+                        'luma': {'imagem': brilho_rgb, 'subplot': [1, 0], 'titulo': 'Brilho acromático', 'alpha': alpha_mask, 'cmap' : 'Reds'},
+                        'clusters': {'imagem': imagem_clusters, 'subplot': [1, 1], 'titulo': 'Clusterização', 'alpha': 1, 'cmap' : None}
+                        }
+                
+                titulo = f'Clusterização {image_cell[:-4]} - Tempo de cultivo {param_cultivo["tempo_cultivo"]} e concentração {param_cultivo["concentracao"]} mM'
+                fig_cluster.suptitle(titulo, fontweight='bold', fontsize=13)
+                fig_cluster.savefig(f'{folder}\cells\Mapas\Clusterizacao\{c} - {h} - {image_cell[:-4]}.jpg', format='jpg', dpi=1000)
+                
+                plot_img(dic, param_cultivo, n_clusters)
+                # Clear the current axes.
+                plt.cla() 
+                # Clear the current figure.
+                plt.clf() 
+                # Closes all the figure windows.
+                plt.close('all')    
+
     df_clusters = pd.DataFrame(bd_clusters)
     df_clusters.to_excel(f'{folder}\cells\Base de dados Clusters.xlsx', index_label=False)
-    
