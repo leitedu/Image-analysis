@@ -9,3 +9,5 @@ param_luma = [0.299, 0.587, 0.114]
 limiar = 50
 eps = 5
 min_samples = 20
+
+folder = r'./images' #folder of image cultures
