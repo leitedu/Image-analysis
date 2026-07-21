@@ -21,7 +21,7 @@ if __name__ == "__main__":
             path_media = fr'{folder}\media\{h}\sem celultivo-stokes\primeiro foco\{c}'
 
             # Média das imagens de meio de cultivo já convertida em array
-            imagem_inicial_array, std_inicial_array = media_fotos(path_media)
+            imagem_inicial_array, std_inicial_array = image_avg(path_media)
             imagem_inicial = Image.fromarray(np.round(imagem_inicial_array).astype(np.uint8))
             
             # Fotos das células da pasta de uma determinada concentração e tempo de cultivo
@@ -30,7 +30,7 @@ if __name__ == "__main__":
             for image_cell in cell_files:
                 
                 # Verifica se imagem foi capturado por contraste de fase ou fluorescência
-                flag = identifica_tecnica(fr'{path_cell}\{image_cell}')
+                flag = technique(fr'{path_cell}\{image_cell}')
                 if flag == 0:
                     imagem_contraste = Image.open(fr'{path_cell}\{image_cell}')
                     continue
@@ -44,7 +44,7 @@ if __name__ == "__main__":
 
                 param_cultivo = {'concentracao': c, 'tempo_cultivo': h}
 
-                imagem_clusters, alpha_mask, dados_clusters_img, brilho_rgb, fig_cluster, n_clusters = clusterizar_imagem(img_dif)
+                imagem_clusters, alpha_mask, dados_clusters_img, brilho_rgb, fig_cluster, n_clusters = clusterization(img_dif)
 
                 bd_clusters["Tempo de cultivo"] += [h for i in dados_clusters_img["cluster"]]
                 bd_clusters["Concentração de sílica"] += [c for i in dados_clusters_img["cluster"]]
