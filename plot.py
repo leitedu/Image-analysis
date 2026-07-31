@@ -28,7 +28,7 @@ def plot_img(dic, culture_params, n_clusters, folder):
 # Elaborates orchestrator dictionary from results
 def plot_dict(initial_img, final_img, image_cell, contrast_img, rgb_brightness, binary_mask, clusterized_img):
     dic = {'initial_img': {'image': initial_img, 'subplot': [0, 0], 'title': 'No culture media average', 'alpha': 1, 'cmap' : None},
-                   'final_img': {'image': final_img, 'subplot': [0, 1], 'title': image_cell[:-4], 'alpha': 1, 'cmap' : None},
+                   'final_img': {'image': final_img, 'subplot': [0, 1], 'title': image_cell[:-4].capitalize(), 'alpha': 1, 'cmap' : None},
                    'contrat': {'image': contrast_img, 'subplot': [1, 0], 'title': 'Phase-contrast image', 'alpha': 0.8, 'cmap' : None},
                    'luma': {'image': rgb_brightness, 'subplot': [1, 0], 'title': 'Phase-contrast image + Absorption map', 'alpha': binary_mask, 'cmap' : 'Reds'},
                    'clusters': {'image': clusterized_img, 'subplot': [1, 1], 'title': 'Clusterization', 'alpha': 1, 'cmap' : None}
