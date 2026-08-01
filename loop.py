@@ -16,7 +16,7 @@ def loop(hr, concentrations, folder, param_luma, limiar, eps, min_samples):
             # Folders
             path_cell = folder / fr'cells/{h}/{c}'
             path_media = folder / fr'media/{h}/{c}'
-            path_map =  folder / fr'Maps/{h}/{c}'
+            path_map =  folder / fr'outputs'
 
             path_map.mkdir(parents=True, exist_ok=True)
 
@@ -56,4 +56,4 @@ def loop(hr, concentrations, folder, param_luma, limiar, eps, min_samples):
 
     # Creates and save clusters database with Pandas
     df_clusters = pd.concat(df_list, ignore_index=True)
-    df_clusters.to_excel(folder / 'Clusters database.xlsx', index_label=False)
+    df_clusters.to_excel(folder / 'outputs/Clusters database.xlsx', index_label=False)
