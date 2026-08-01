@@ -20,4 +20,4 @@ if __name__ == '__main__':
 
     folder_path = Path(folder)
 
-    loop(main_db, cultivation_times, concentartions, folder_path, param_luma, limiar, eps, min_samples)
+    loop(cultivation_times, concentartions, folder_path, param_luma, limiar, eps, min_samples)
