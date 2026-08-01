@@ -1,7 +1,7 @@
-opencv
-os
 numpy
-matplotlib
 pandas
-PIL
+opencv-python
 scikit-learn
+Pillow
+matplotlib
+openpyxl
