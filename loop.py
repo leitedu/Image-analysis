@@ -5,8 +5,9 @@ from image_processing import read_image, technique_identifier, average_images, l
 from plot import plot_img, plot_dict
 
 
-def loop(main_db, hr, concentrations, folder, param_luma, limiar, eps, min_samples):
+def loop(hr, concentrations, folder, param_luma, limiar, eps, min_samples):
 
+    df_list = [] # List to storage dataframes from image clusterization
     for h in hr:
         for c in concentrations:
 
@@ -44,14 +45,15 @@ def loop(main_db, hr, concentrations, folder, param_luma, limiar, eps, min_sampl
                 # Runs clusterization algorithm (DBSCAN)
                 clusterized_img, binary_mask, unique_clusters, points, labels, rgb_brightness, n_clusters = image_clustering(img_dif,  limiar, eps, min_samples)
 
-                # Updates clusters database with clusters data found on image
+                # Updates clusters dataframe list with clusters data found on image
                 db_cluster = db_update(unique_clusters, points, labels, img_dif, image_cell, h, c)
-                main_db.update(db_cluster)
+                df_imagem = pd.DataFrame(db_cluster)
+                df_list.append(df_imagem)
 
                 # Sets a support dictionary and structures result map from it
                 dic = plot_dict(initial_img, final_img, image_cell, contrast_img, rgb_brightness, binary_mask, clusterized_img)
                 plot_img(dic, culture_params, n_clusters, path_map)
 
     # Creates and save clusters database with Pandas
-    df_clusters = pd.DataFrame(main_db)
+    df_clusters = pd.concat(df_list, ignore_index=True)
     df_clusters.to_excel(folder / 'Clusters database.xlsx', index_label=False)
