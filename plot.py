@@ -15,7 +15,7 @@ def plot_img(dic, culture_params, n_clusters, folder):
     ax[1, 1].text(0.57, -0.06, f"Number of clusters: {n_clusters}", transform=ax[1, 1].transAxes, ha="left", va="bottom", fontsize=9, color="black")
     map_fig.suptitle(title, fontweight='bold', fontsize=13)
 
-    map_fig.savefig(rf'{folder}\{culture_params["concentration"]} - {culture_params["cultivation_time"]} -  {dic["final_img"]["title"]}.jpg', format='jpg', dpi=1000)
+    map_fig.savefig(folder / rf'{culture_params["concentration"]} - {culture_params["cultivation_time"]} -  {dic["final_img"]["title"]}.jpg', format='jpg', dpi=1000)
     print(f'✅ Saving {culture_params["concentration"]} - {culture_params["cultivation_time"]} -  {dic["final_img"]["title"]}.jpg')
 
     # Clear the current axes.
