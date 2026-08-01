@@ -47,7 +47,7 @@ data_folder/
 │       └── 📂 {concentration}/
 │           ├── control_01.tif          # Blank culture media images
 │           └── ...
-└── 📂 Maps/                            # Generated output directory
+└── 📂 Maps/                            # Generated output directory (created by the pipeline if note provided)
 ```
 
 The pipeline is built modularly to ensure clean separation of concerns:
