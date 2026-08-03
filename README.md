@@ -15,7 +15,7 @@ To understand whether silica is effectively absorbed by the cells and map its sp
 1. **Paired Image Processing:** The script ingests two sets of images:
    * **Cell Culture:** Paired Phase Contrast and Fluorescence images taken sequentially. The pipeline automatically distinguishes between the two techniques based on RGB channel magnitudes.
    * **Control Media:** Images of the culture media at the exact same concentration and time, but without cells, acting as a baseline.
-2. **Differential Absorption Extraction:** The net absorption is modeled by subtracting the average baseline control media ($\bar{I}_{media}$) from the cellular fluorescence image ($I_{cell}$). The script isolates the positive difference (representing silica absorbed by the cells):
+2. **Differential Absorption Extraction:** The net absorption is modeled by subtracting the average baseline control media (<i>Ī</i><sub>media</sub>) from the cellular fluorescence image (<i>I</i><sub>cell</sub>). The script isolates the positive difference (representing silica absorbed by the cells):
    $$\Delta I = \max(0, I_{cell} - \bar{I}_{media})$$
 3. **LUMA BT.601-7 Conversion:** To convert 3-channel RGB differential signal matrices into a standardized scalar brightness map $Y$ for clustering, we apply the ITU-R BT.601-7 luma coefficients:
    $$Y = 0.299 \cdot R + 0.587 \cdot G + 0.114 \cdot B$$
