@@ -23,7 +23,7 @@ def image_clustering(brightness_img: np.ndarray, brightness_limiar: int = 0.15, 
     - n_clusters (int): Total count of valid clusters detected (excluding noise).
     """
     
-    # Normalize to 0-255
+    # Normalize
     rgb_brightness = cv2.normalize(brightness_img, None, 0, 1, cv2.NORM_MINMAX)
     
     # Applies brightness threshold
@@ -49,8 +49,8 @@ def image_clustering(brightness_img: np.ndarray, brightness_limiar: int = 0.15, 
     
     # Clusters coloring
     for (y, x), label in zip(points, labels):
-        if label == -1:  # points de ruído
-            clusterized_img[y, x] = (0, 0, 255)  # vermelho
+        if label == -1:  # noise points
+            clusterized_img[y, x] = (0, 0, 255)  # red
         else:
             clusterized_img[y, x] = cores[label % n_clusters]
     
